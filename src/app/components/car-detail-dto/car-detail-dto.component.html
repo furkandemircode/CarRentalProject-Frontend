@@ -1,0 +1,64 @@
+<div>
+  <div class="shadow-lg">
+    <div *ngIf="carImageDetails.length > 0" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-inner">
+        <div class="carousel-item" *ngFor="let carImage of carImageDetails; let i = index" [class.active]="i == 0">
+          <img [src]="getImagePath(carImage)" class="d-block w-100" alt="car image">
+        </div>
+      </div>
+  
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+  
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  
+    <div id="carousel-body-card" *ngFor="let car of carDetails">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{car.carName}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{car.colorName}} Renk</li>
+          <li class="list-group-item">{{car.modelYear}} Model</li>
+          <li class="list-group-item">Günlük Ücret &#8378;{{car.dailyPrice}}</li>
+        </ul>
+      </div>
+    </div>
+  
+    <div *ngIf="carImageDetails.length === 0" class="alert alert-info text-center">
+      Araca ait resim bulunmamaktadır.
+    </div>
+  </div>
+</div>
+
+<form (ngSubmit)="rentalAdd(addRental)" #rentalForm="ngForm">
+  <div class="form-group">
+    <label for="rentDate">Rent Date</label>
+    <input
+      id="rentDate"
+      name="rentDate"
+      type="date"
+      class="form-control"
+      [(ngModel)]="addRental.rentDate"
+    />
+  </div>
+  
+  <div class="form-group">
+    <label for="returnDate">Return Date</label>
+    <input
+      id="returnDate"
+      name="returnDate"
+      type="date"
+      class="form-control"
+      [(ngModel)]="addRental.returnDate"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="navigateToPayment(addRental.carId)">Submit</button>
+</form>

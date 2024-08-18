@@ -1,0 +1,17 @@
+.card {
+    margin-bottom: 20px;
+  }
+  
+  .card-img-top {
+    height: 200px; /* Tüm resimlerin aynı yükseklikte olmasını sağla */
+    width: 100%; /* Resimlerin kart genişliğini kaplamasını sağla */
+    object-fit: cover; /* Resimleri çerçeveye sığdırırken oranlarını koru */
+  }
+  
+  .placeholder-image {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+  }

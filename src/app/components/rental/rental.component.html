@@ -1,0 +1,24 @@
+
+<div>
+    <h2>Add Rental</h2>
+    <form (ngSubmit)="addRental(newRental)">
+      <div>
+        <label for="carId">Car ID:</label>
+        <input type="number" id="carId" [(ngModel)]="newRental.carId" name="carId" required>
+      </div>
+      <div>
+        <label for="customerId">Customer ID:</label>
+        <input type="number" id="customerId" [(ngModel)]="newRental.customerId" name="customerId" required>
+      </div>
+      <div>
+        <label for="rentDate">Rent Date:</label>
+        <input type="date" id="rentDate" [(ngModel)]="newRental.rentDate" name="rentDate" required>
+      </div>
+      <div>
+        <label for="returnDate">Return Date:</label>
+        <input type="date" id="returnDate" [(ngModel)]="newRental.returnDate" name="returnDate">
+      </div>
+      <button type="submit">Add Rental</button>
+    </form>
+  </div>
+  

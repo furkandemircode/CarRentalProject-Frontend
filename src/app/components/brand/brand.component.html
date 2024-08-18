@@ -1,0 +1,20 @@
+<div class="mb-3">
+  <input type="text" [(ngModel)]="filterBrandText" class="form-control" id="filterBrandText" placeholder="Marka ara">
+</div>
+
+<ul class="list-group mb-2">
+  <li routerLink="/cars" 
+      [class]="getAllBrandClass()" 
+      (click)="setGetAllBrand()"
+      [queryParams]="removeBrandQueryParam()">
+    Tüm Markalar
+  </li>
+  <li *ngFor="let brand of brands | filterBrand:filterBrandText"
+      [class]="getCurrentBrandClass(brand)"
+      (click)="setCurrentBrand(brand)"
+      [routerLink]="['/cars']"  
+      [queryParams]="{ brandId: brand.id }" 
+      queryParamsHandling="merge">
+    {{ brand.name }}
+  </li>
+</ul>

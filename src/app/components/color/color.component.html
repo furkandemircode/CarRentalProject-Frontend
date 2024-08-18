@@ -1,0 +1,20 @@
+<div class="mb-3">
+  <input type="text" [(ngModel)]="filterColorText" class="form-control" id="filterColorText" placeholder="Renk ara">
+</div>
+
+<ul class="list-group">
+  <li routerLink="/cars" 
+      [class]="getAllColorClass()" 
+      (click)="setGetAllColor()"
+      [queryParams]="removeColorQueryParam()">
+    Tüm Renkler
+  </li>
+  <li *ngFor="let color of colors | filterColor:filterColorText"
+      [class]="getCurrentColorClass(color)"
+      (click)="setCurrentColor(color)"
+      [routerLink]="['/cars']"
+      [queryParams]="{ colorId: color.id }" 
+      queryParamsHandling="merge">
+    {{ color.name }}
+  </li>
+</ul>
